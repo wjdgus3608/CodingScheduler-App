@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.layout_card.view.*
 
-class CardAdapter() :RecyclerView.Adapter<CardAdapter.MainViewHolder>(){
+class CardAdapter :RecyclerView.Adapter<CardAdapter.MainViewHolder>(){
     var mList = MutableLiveData<ArrayList<CardItem>>()
 
 
@@ -27,7 +27,6 @@ class CardAdapter() :RecyclerView.Adapter<CardAdapter.MainViewHolder>(){
     inner class MainViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.layout_card, parent, false)) {
         var title:TextView=itemView.card_title
-
     }
 
 }
