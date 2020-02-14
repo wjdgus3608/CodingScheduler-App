@@ -66,6 +66,7 @@
         android:clickable="true"
         android:focusable="true"
         app:srcCompat="@drawable/ic_add_btn"
+        android:onClick="@{()->vm.handleAddBtn()}"
         />
 </FrameLayout>
 

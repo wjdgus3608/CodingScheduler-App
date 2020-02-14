@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.library.baseAdapters.BR
-import com.example.codingscheduler.Fragment.ListFragment
+import com.example.codingscheduler.fragments.ListFragment
 import com.example.codingscheduler.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

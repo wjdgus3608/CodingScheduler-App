@@ -1,17 +1,22 @@
 package com.example.codingscheduler
 
+import android.widget.PopupWindow
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlin.collections.ArrayList
 
-public class MainViewModel:ViewModel() {
+class MainViewModel:ViewModel() {
     val mList=MutableLiveData<ArrayList<CardItem>>()
+    var isAddClicked=MutableLiveData<Boolean>()
     init {
-        var list=ArrayList<CardItem>()
-        list.add(CardItem("test1",1))
-        list.add(CardItem("test2",2))
-        mList.value=list
+        mList.value= ArrayList()
+        isAddClicked.value=false
+        addCard(CardItem("test1",1))
+        addCard(CardItem("test2",2))
 
     }
     fun addCard(item:CardItem) = mList.value!!.add(item)
+    fun handleAddBtn(){
+        isAddClicked.value=isAddClicked.value!!.not()
+    }
 }
