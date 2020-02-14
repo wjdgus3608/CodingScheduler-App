@@ -1,5 +1,7 @@
 package com.example.codingscheduler
 
+import android.os.Debug
+import android.util.Log
 import android.widget.PopupWindow
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,7 +18,7 @@ class MainViewModel:ViewModel() {
 
     }
     fun addCard(item:CardItem) = mList.value!!.add(item)
-    fun handleAddBtn(){
+    fun toggleIsAddClicked(){
         isAddClicked.value=isAddClicked.value!!.not()
     }
 }
