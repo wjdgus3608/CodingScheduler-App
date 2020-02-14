@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="spinner_list">
-
+    <string-array name="add_spinner_list">
+        <item>백준</item>
+        <item>프로그래머스</item>
     </string-array>
 </resources>
