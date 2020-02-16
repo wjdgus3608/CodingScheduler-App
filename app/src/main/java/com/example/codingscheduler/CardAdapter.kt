@@ -1,6 +1,8 @@
 package com.example.codingscheduler
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -21,6 +23,13 @@ class CardAdapter :RecyclerView.Adapter<CardAdapter.MainViewHolder>(){
 
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+            holder.itemView.setOnLongClickListener(object :View.OnLongClickListener{
+                override fun onLongClick(v: View?): Boolean {
+                    Log.e("log","Long Click $position")
+
+                    return false
+                }
+            })
             mList.value!![position].let { item -> with(holder){
                 title.text=item.title
                 number.text=item.number

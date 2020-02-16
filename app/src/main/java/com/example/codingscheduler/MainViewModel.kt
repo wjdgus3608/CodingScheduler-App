@@ -25,7 +25,8 @@ class MainViewModel:ViewModel() {
         isAddClicked.value=isAddClicked.value!!.not()
     }
     fun submitClicked(){
-        addCard(CardItem(digTitle.value!!, digNumber.value!!,"1", ArrayList()))
+        if(!dataNullOrBlankCheck(digTitle))
+        addCard(CardItem(digTitle.value!!, digNumber.value?:"","1", ArrayList()))
         clearDigData()
         toggleIsAddClicked()
     }
@@ -33,4 +34,5 @@ class MainViewModel:ViewModel() {
         digTitle.value=""
         digNumber.value=""
     }
+    fun dataNullOrBlankCheck(data:MutableLiveData<String>)=data.value.isNullOrBlank()
 }
