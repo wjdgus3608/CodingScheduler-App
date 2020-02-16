@@ -14,6 +14,8 @@ import com.example.codingscheduler.MainViewModel
 import com.example.codingscheduler.R
 import com.example.codingscheduler.databinding.DigAddBinding
 import com.example.codingscheduler.databinding.FrgListBinding
+import kotlinx.android.synthetic.main.dig_add.*
+import kotlinx.android.synthetic.main.layout_card.*
 
 
 class ListFragment:Fragment(){
@@ -38,8 +40,12 @@ class ListFragment:Fragment(){
         val builder = AlertDialog.Builder(context!!)
         dialog=builder.setView(popupView.root).create()
         model.isAddClicked.observe(this, Observer {
-            if(it) dialog?.show()
+            if(it) {
+                dialog?.show()
+            }
             else dialog?.dismiss()
+            popupView.digTitle.text?.clear()
+            popupView.digNumber.text?.clear()
         })
 
 

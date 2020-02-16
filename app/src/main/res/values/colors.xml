@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="AppBarColor">#282C33</color>
     <color name="AddBtnColor">#282C33</color>
+    <color name="RemoveBtnColor">#282C33</color>
 </resources>

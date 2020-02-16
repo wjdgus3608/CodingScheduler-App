@@ -1,10 +1,9 @@
 package com.example.codingscheduler
 
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
+import com.example.codingscheduler.dataclass.CardItem
 
 
 @BindingAdapter("bind_items")

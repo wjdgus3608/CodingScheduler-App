@@ -15,16 +15,19 @@
     >
 
     <EditText
-        android:id="@+id/textView"
+        android:id="@+id/dig_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="title" />
+        android:hint="title"
+        android:text="@={vm.digTitle}"
+        />
 
     <EditText
-        android:id="@+id/textView2"
+        android:id="@+id/dig_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="number" />
+        android:hint="number"
+        android:text="@={vm.digNumber}"/>
 
     <Spinner
         android:id="@+id/spinner2"
@@ -38,7 +41,8 @@
         android:id="@+id/positive_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="추가" />
+        android:text="추가"
+        android:onClick="@{()->vm.submitClicked()}"/>
 
     <Button
         android:id="@+id/negative_btn"
