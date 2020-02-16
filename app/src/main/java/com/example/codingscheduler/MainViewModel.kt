@@ -1,24 +1,36 @@
 package com.example.codingscheduler
 
-import android.os.Debug
 import android.util.Log
-import android.widget.PopupWindow
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.codingscheduler.dataclass.CardItem
 import kotlin.collections.ArrayList
 
 class MainViewModel:ViewModel() {
     val mList=MutableLiveData<ArrayList<CardItem>>()
     var isAddClicked=MutableLiveData<Boolean>()
+    var digTitle=MutableLiveData<String>()
+    var digNumber=MutableLiveData<String>()
+    var digType=MutableLiveData<String>()
+    var digTags=MutableLiveData<ArrayList<String>>()
     init {
         mList.value= ArrayList()
         isAddClicked.value=false
-        addCard(CardItem("test1",1))
-        addCard(CardItem("test2",2))
+        addCard(CardItem("test1", "1","1", ArrayList()))
+        addCard(CardItem("test2", "2","1", ArrayList()))
 
     }
-    fun addCard(item:CardItem) = mList.value!!.add(item)
+    fun addCard(item: CardItem) = mList.value!!.add(item)
     fun toggleIsAddClicked(){
         isAddClicked.value=isAddClicked.value!!.not()
+    }
+    fun submitClicked(){
+        addCard(CardItem(digTitle.value!!, digNumber.value!!,"1", ArrayList()))
+        clearDigData()
+        toggleIsAddClicked()
+    }
+    fun clearDigData(){
+        digTitle.value=""
+        digNumber.value=""
     }
 }
