@@ -34,6 +34,12 @@ class CardAdapter :RecyclerView.Adapter<CardAdapter.MainViewHolder>(){
                 title.text=item.title
                 number.text=item.number
             }}
+        holder.itemView.delete_btn.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                mList.value!!.removeAt(position)
+                notifyItemRemoved(position)
+            }
+        })
     }
 
     inner class MainViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
