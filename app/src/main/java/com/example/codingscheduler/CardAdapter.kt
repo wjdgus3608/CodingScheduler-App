@@ -6,16 +6,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.library.baseAdapters.BR
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.example.codingscheduler.databinding.LayoutCardBinding
 import com.example.codingscheduler.dataclass.CardItem
+import kotlinx.android.synthetic.main.dig_add.view.*
 import kotlinx.android.synthetic.main.layout_card.view.*
 
-class CardAdapter :RecyclerView.Adapter<CardAdapter.MainViewHolder>(){
+class CardAdapter(parentModel: MainViewModel) :RecyclerView.Adapter<CardAdapter.MainViewHolder>(){
     var mList = MutableLiveData<ArrayList<CardItem>>()
+    var model:MainViewModel
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder = MainViewHolder(parent)
+    init {
+        model=parentModel
+    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
+        var inflater=LayoutInflater.from(parent.context)
+        var binding:LayoutCardBinding=DataBindingUtil.inflate(inflater,R.layout.layout_card,parent,false)
+        binding.setVariable(BR.vm,model)
+       return MainViewHolder(binding)
+    }
 
 
     override fun getItemCount(): Int =mList.value!!.size
@@ -42,8 +56,7 @@ class CardAdapter :RecyclerView.Adapter<CardAdapter.MainViewHolder>(){
         })
     }
 
-    inner class MainViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.layout_card, parent, false)) {
+    inner class MainViewHolder(binding: LayoutCardBinding) : RecyclerView.ViewHolder(binding.root) {
         var title:TextView=itemView.card_title
         var number:TextView=itemView.card_num
 //        var type:TextView=itemView.card

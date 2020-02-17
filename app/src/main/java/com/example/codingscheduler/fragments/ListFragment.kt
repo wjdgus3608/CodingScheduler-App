@@ -15,6 +15,7 @@ import com.example.codingscheduler.R
 import com.example.codingscheduler.databinding.DigAddBinding
 import com.example.codingscheduler.databinding.FrgListBinding
 import kotlinx.android.synthetic.main.dig_add.*
+import kotlinx.android.synthetic.main.frg_list.*
 import kotlinx.android.synthetic.main.layout_card.*
 
 
@@ -47,7 +48,6 @@ class ListFragment:Fragment(){
             popupView.digTitle.text?.clear()
             popupView.digNumber.text?.clear()
         })
-
-
+        model.time.observe(this, Observer { time_view.text=it.toString() })
     }
 }

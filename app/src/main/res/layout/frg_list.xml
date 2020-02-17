@@ -49,14 +49,11 @@
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         bind_items="@{vm.mList}"
+        bind_model="@{vm}"
         android:padding="5dp"
         >
 
     </androidx.recyclerview.widget.RecyclerView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/frg_floatingActionButton"
         android:layout_width="wrap_content"
@@ -67,6 +64,15 @@
         android:focusable="true"
         app:srcCompat="@drawable/ic_add_btn"
         android:onClick="@{()->vm.toggleIsAddClicked()}"
+        app:borderWidth="0dp"
+        />
+    <TextView
+        android:id="@+id/time_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom"
+        android:textSize="20sp"
+        android:gravity="center"
         />
 </FrameLayout>
 

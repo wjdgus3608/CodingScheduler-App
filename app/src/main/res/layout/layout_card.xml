@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="com.example.codingscheduler.MainViewModel" />
+    </data>
+<FrameLayout
     android:layout_height="150dp"
     android:layout_width="match_parent">
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -28,7 +34,7 @@
         >
         <LinearLayout
             android:id="@+id/card_text_container"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:orientation="horizontal">
@@ -48,7 +54,7 @@
         </LinearLayout>
         <LinearLayout
             android:id="@+id/card_tag_container"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="100dp"
             android:orientation="horizontal"
             android:layout_below="@+id/card_text_container"
@@ -64,11 +70,23 @@
             android:orientation="horizontal"
             android:layout_toEndOf="@+id/card_text_container"
             android:layout_toRightOf="@+id/card_text_container"
+            android:layout_margin="10dp"
             android:gravity="center">
-            <Button
+            <ToggleButton
+                android:id="@+id/toggle_btn"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/ic_timer"/>
+                android:text="ToggleButton"
+                android:background="@drawable/toogle_btn"
+                android:onClick="@{()->vm.timerHandler()}"
+                android:checked="@{vm.isTimeRunning}"
+                />
+            <Button
+                android:id="@+id/stop_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_stop"
+                android:onClick="@{()->vm.timerStop()}"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/card_record_container"
@@ -103,3 +121,4 @@
 
 </androidx.cardview.widget.CardView>
 </FrameLayout>
+</layout>
