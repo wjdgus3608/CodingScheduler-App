@@ -66,14 +66,6 @@
         android:onClick="@{()->vm.toggleIsAddClicked()}"
         app:borderWidth="0dp"
         />
-    <TextView
-        android:id="@+id/time_view"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="bottom"
-        android:textSize="20sp"
-        android:gravity="center"
-        />
 </FrameLayout>
 
 

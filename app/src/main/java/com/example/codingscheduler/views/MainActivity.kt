@@ -1,20 +1,24 @@
-package com.example.codingscheduler
+package com.example.codingscheduler.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.library.baseAdapters.BR
-import com.example.codingscheduler.fragments.ListFragment
+import com.example.codingscheduler.MainViewModel
+import com.example.codingscheduler.R
 import com.example.codingscheduler.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding=DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
+        val binding=DataBindingUtil.setContentView<ActivityMainBinding>(this,
+            R.layout.activity_main
+        )
         binding.setVariable(BR.vm, MainViewModel())
         binding.setLifecycleOwner { this.lifecycle }
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
+        supportFragmentManager.beginTransaction().replace(
+            R.id.fragment_container,
             ListFragment()
         ).commit()
     }

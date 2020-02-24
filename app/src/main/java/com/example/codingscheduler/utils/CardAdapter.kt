@@ -1,4 +1,4 @@
-package com.example.codingscheduler
+package com.example.codingscheduler.utils
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,25 +8,25 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.library.baseAdapters.BR
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.example.codingscheduler.MainViewModel
+import com.example.codingscheduler.R
 import com.example.codingscheduler.databinding.LayoutCardBinding
 import com.example.codingscheduler.dataclass.CardItem
-import kotlinx.android.synthetic.main.dig_add.view.*
 import kotlinx.android.synthetic.main.layout_card.view.*
 
 class CardAdapter(parentModel: MainViewModel) :RecyclerView.Adapter<CardAdapter.MainViewHolder>(){
     var mList = MutableLiveData<ArrayList<CardItem>>()
-    var model:MainViewModel
+    var model: MainViewModel
 
     init {
         model=parentModel
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         var inflater=LayoutInflater.from(parent.context)
-        var binding:LayoutCardBinding=DataBindingUtil.inflate(inflater,R.layout.layout_card,parent,false)
+        var binding:LayoutCardBinding=DataBindingUtil.inflate(inflater,
+            R.layout.layout_card,parent,false)
         binding.setVariable(BR.vm,model)
        return MainViewHolder(binding)
     }
@@ -52,6 +52,12 @@ class CardAdapter(parentModel: MainViewModel) :RecyclerView.Adapter<CardAdapter.
             override fun onClick(v: View?) {
                 mList.value!!.removeAt(position)
                 notifyItemRemoved(position)
+            }
+        })
+        holder.itemView.timer_btn.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                model.selectedCard.postValue(position)
+                model.timerStart()
             }
         })
     }

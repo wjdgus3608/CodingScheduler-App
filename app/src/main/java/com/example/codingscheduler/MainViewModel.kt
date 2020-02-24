@@ -18,12 +18,14 @@ class MainViewModel:ViewModel() {
     var digType=MutableLiveData<String>()
     var digTags=MutableLiveData<ArrayList<String>>()
     var isTimeRunning=MutableLiveData<Boolean>()
+    var selectedCard=MutableLiveData<Int>()
     var time=MutableLiveData<Long>()
     var timeTask:Timer?=null
     init {
         mList.value= ArrayList()
         isAddClicked.value=false
         isTimeRunning.value=false
+        selectedCard.value=-1
         time.value=0
         addCard(CardItem("test1", "1","1", ArrayList()))
         addCard(CardItem("test2", "2","1", ArrayList()))
@@ -36,18 +38,9 @@ class MainViewModel:ViewModel() {
     fun submitClicked(){
         if(!dataNullOrBlankCheck(digTitle))
         addCard(CardItem(digTitle.value!!, digNumber.value?:"","1", ArrayList()))
-        clearDigData()
         toggleIsAddClicked()
     }
-    fun clearDigData(){
-        digTitle.value=""
-        digNumber.value=""
-    }
     fun dataNullOrBlankCheck(data:MutableLiveData<String>)=data.value.isNullOrBlank()
-    fun timerHandler(){
-        if(isTimeRunning.value!!) timerPause()
-        else timerStart()
-    }
     fun timerStart(){
         if(isTimeRunning.value!!) timerStop()
         isTimeRunning.value=true

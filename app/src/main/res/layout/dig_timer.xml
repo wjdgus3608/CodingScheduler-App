@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="vm"
+            type="com.example.codingscheduler.MainViewModel" />
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="100dp">
+<TextView
+    android:id="@+id/time_view"
+    android:layout_width="150dp"
+    android:layout_height="match_parent"/>
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:text="기록"/>
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:text="초기"/>
+</LinearLayout>
+</layout>

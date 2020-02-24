@@ -72,21 +72,12 @@
             android:layout_toRightOf="@+id/card_text_container"
             android:layout_margin="10dp"
             android:gravity="center">
-            <ToggleButton
-                android:id="@+id/toggle_btn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="ToggleButton"
-                android:background="@drawable/toogle_btn"
-                android:onClick="@{()->vm.timerHandler()}"
-                android:checked="@{vm.isTimeRunning}"
-                />
             <Button
-                android:id="@+id/stop_btn"
+                android:id="@+id/timer_btn"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/ic_stop"
-                android:onClick="@{()->vm.timerStop()}"/>
+                android:background="@drawable/ic_timer"
+                />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/card_record_container"
