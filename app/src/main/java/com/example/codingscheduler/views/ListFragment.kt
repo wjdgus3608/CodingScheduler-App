@@ -22,10 +22,11 @@ import kotlinx.android.synthetic.main.dig_add.*
 import kotlinx.android.synthetic.main.dig_timer.view.*
 import kotlinx.android.synthetic.main.frg_list.*
 import kotlinx.android.synthetic.main.layout_card.*
+import kotlin.concurrent.timer
 
 
-class ListFragment:Fragment(){
-    lateinit var model:MainViewModel
+class ListFragment(parent:MainViewModel):Fragment(){
+    val model=parent
     var dialog:AlertDialog?=null
 
     override fun onCreateView(
@@ -34,7 +35,6 @@ class ListFragment:Fragment(){
         savedInstanceState: Bundle?
         ): View? {
         val binding=DataBindingUtil.inflate<FrgListBinding>(inflater,R.layout.frg_list,container,false)
-        model= MainViewModel()
         binding.setVariable(BR.vm,model)
         return binding.root
     }
@@ -57,7 +57,10 @@ class ListFragment:Fragment(){
             popupView.digNumber.text?.clear()
         })
 
+        model.mList.observe(this, Observer { frg_recyclerView.adapter?.notifyDataSetChanged() })
         model.time.observe(this, Observer { timerView.root.time_view.text=it.toString() })
-        model.isTimeRunning.observe(this, Observer { if(it) timerWindow.showAsDropDown(view,0,-200)  })
+        model.isTimerShow.observe(this, Observer { if(it) timerWindow.showAsDropDown(view,0,-200) else timerWindow.dismiss() })
+        model.selectedCard.observe(this, Observer { timerView.timerTitle.text=it?.title })
+        model.isTimeRunning.observe(this, Observer { timerView.playBtn.setImageResource(if(it) R.drawable.ic_pause else R.drawable.ic_play) })
     }
 }

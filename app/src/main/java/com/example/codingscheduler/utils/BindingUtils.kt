@@ -1,5 +1,6 @@
 package com.example.codingscheduler.utils
 
+import android.util.Log
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
