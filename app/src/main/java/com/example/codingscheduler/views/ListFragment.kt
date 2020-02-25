@@ -58,7 +58,7 @@ class ListFragment(parent:MainViewModel):Fragment(){
         })
 
         model.mList.observe(this, Observer { frg_recyclerView.adapter?.notifyDataSetChanged() })
-        model.time.observe(this, Observer { timerView.root.time_view.text=it.toString() })
+        model.time.observe(this, Observer { timerView.root.time_view.text=model.makeTimeFormat(it) })
         model.isTimerShow.observe(this, Observer { if(it) timerWindow.showAsDropDown(view,0,-200) else timerWindow.dismiss() })
         model.selectedCard.observe(this, Observer { timerView.timerTitle.text=it?.title })
         model.isTimeRunning.observe(this, Observer { timerView.playBtn.setImageResource(if(it) R.drawable.ic_pause else R.drawable.ic_play) })

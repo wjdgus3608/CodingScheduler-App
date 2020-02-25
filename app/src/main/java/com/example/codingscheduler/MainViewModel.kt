@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.example.codingscheduler.dataclass.CardItem
 import java.text.FieldPosition
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.concurrent.timer
@@ -46,7 +47,6 @@ class MainViewModel:ViewModel() {
         if(isTimeRunning.value!!) timerStop()
         isTimeRunning.value=true
         timeTask=timer(period = 1000){
-            Log.e("log","time is : "+time.value)
             time.postValue(time.value!!+1)
         }
     }
@@ -96,6 +96,8 @@ class MainViewModel:ViewModel() {
         var min:Int=(tmpTime/60).toInt()
         tmpTime-=min*60
         var sec=tmpTime
-        return "$hour:$min:$tmpTime"
+
+        return "%d:%02d:%02d".format(hour,min,sec)
+
     }
 }
