@@ -54,9 +54,11 @@ class CardAdapter(parentModel: MainViewModel) :RecyclerView.Adapter<CardAdapter.
                     time2.text=model.makeTimeFormat(item.times!![1])
                 if(size>=1)
                     time1.text=model.makeTimeFormat(item.times!![0])
+                Log.e("log","${size}")
             }}
         holder.itemView.delete_btn.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
+                model.repo.delete(mList.value!![position].id)
                 mList.value!!.removeAt(position)
                 notifyItemRemoved(position)
             }

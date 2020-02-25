@@ -1,6 +1,14 @@
 package com.example.codingscheduler.dataclass
 
-import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
+import androidx.room.*
 
-data class CardItem(var title:String, var number:String, var type:String, var tags:ArrayList<String>?, var times:ArrayList<Long>?)
+@Entity(tableName = "cards")
+data class CardItem(
+    @PrimaryKey(autoGenerate = true)
+    var id:Long,
+    var title:String,
+    var number:String,
+    var type:String,
+    var tags:MutableList<String>?,
+    var times:MutableList<Long>?
+)
