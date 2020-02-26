@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="vm"
+            type="com.example.codingscheduler.MainViewModel" />
+    </data>
+<LinearLayout
+    android:id="@+id/dia_container"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:gravity="center"
+    >
+
+    <EditText
+        android:id="@+id/dig_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="title"
+        android:text="@={vm.digTitle}"
+        />
+
+    <EditText
+        android:id="@+id/dig_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="number"
+        android:text="@={vm.digNumber}"/>
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/add_spinner_list"
+        android:layout_marginBottom="60dp"
+        />
+
+    <Button
+        android:id="@+id/positive_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="추가"
+        android:onClick="@{()->vm.submitClicked()}"/>
+
+    <Button
+        android:id="@+id/negative_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="취소"
+        android:onClick="@{()->vm.toggleIsAddClicked()}"/>
+</LinearLayout>
+</layout>

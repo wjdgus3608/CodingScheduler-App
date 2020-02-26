@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="actionBarSize">50dp</dimen>
+    <dimen name="tabSize">50dp</dimen>
+    <dimen name="cardRadius">10dp</dimen>
+</resources>

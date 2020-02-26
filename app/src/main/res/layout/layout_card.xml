@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="com.example.codingscheduler.MainViewModel" />
+    </data>
+<FrameLayout
+    android:layout_height="150dp"
+    android:layout_width="match_parent">
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:background="@android:color/white"
+    app:cardElevation="10dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        >
+        <LinearLayout
+            android:id="@+id/card_text_container"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/card_title"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="title"
+                />
+            <TextView
+                android:id="@+id/card_num"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/card_title"
+                android:layout_toRightOf="@+id/card_title"
+                android:text="number"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/card_tag_container"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/card_text_container"
+            >
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/card_timer_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_toEndOf="@+id/card_text_container"
+            android:layout_toRightOf="@+id/card_text_container"
+            android:layout_margin="10dp"
+            android:gravity="center">
+            <Button
+                android:id="@+id/timer_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_timer"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/card_record_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_toEndOf="@+id/card_text_container"
+            android:layout_toRightOf="@+id/card_text_container"
+            android:layout_below="@+id/card_timer_container"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/card_record1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_green_dark"/>
+            <TextView
+                android:id="@+id/card_record2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_dark"/>
+            <TextView
+                android:id="@+id/card_record3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_orange_dark"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/delete_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:src="@drawable/ic_delete"
+        app:fabCustomSize="30dp"
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/RemoveBtnColor"
+        />
+</androidx.cardview.widget.CardView>
+
+</FrameLayout>
+</layout>
