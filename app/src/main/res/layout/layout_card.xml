@@ -7,7 +7,7 @@
             type="com.example.codingscheduler.MainViewModel" />
     </data>
 <FrameLayout
-    android:layout_height="150dp"
+    android:layout_height="170dp"
     android:layout_width="match_parent">
 
 <androidx.cardview.widget.CardView
