@@ -45,7 +45,7 @@ class ListFragment(parent:MainViewModel):Fragment(){
         popupView.setVariable(BR.vm,model)
         val timerView=DataBindingUtil.inflate<DigTimerBinding>(layoutInflater,R.layout.dig_timer,view,false)
         timerView.setVariable(BR.vm,model)
-        val timerWindow=PopupWindow(timerView.root,1200,200)
+        val timerWindow=PopupWindow(timerView.root,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT)
         val builder = AlertDialog.Builder(context!!)
         dialog=builder.setView(popupView.root).create()
         model.isAddClicked.observe(this, Observer {
