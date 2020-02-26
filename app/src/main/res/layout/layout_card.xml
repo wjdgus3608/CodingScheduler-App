@@ -9,22 +9,13 @@
 <FrameLayout
     android:layout_height="150dp"
     android:layout_width="match_parent">
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/delete_btn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="end"
-        android:src="@drawable/ic_delete"
-        app:fabCustomSize="30dp"
-        app:borderWidth="0dp"
-        android:backgroundTint="@color/RemoveBtnColor"
-        />
+
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardCornerRadius="@dimen/cardRadius"
     android:layout_margin="10dp"
-    android:backgroundTint="@android:color/holo_blue_light"
+    android:background="@android:color/white"
+    app:cardElevation="10dp"
     >
 
     <RelativeLayout
@@ -106,7 +97,17 @@
         </LinearLayout>
 
     </RelativeLayout>
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/delete_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:src="@drawable/ic_delete"
+        app:fabCustomSize="30dp"
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/RemoveBtnColor"
+        />
 </androidx.cardview.widget.CardView>
+
 </FrameLayout>
 </layout>

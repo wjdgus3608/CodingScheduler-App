@@ -3,7 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="AppBarColor">#282C33</color>
+    <color name="AppBarColor">#D7D7D7</color>
     <color name="AddBtnColor">#282C33</color>
     <color name="RemoveBtnColor">#282C33</color>
+    <color name="mainBackGroundColor">#D7D7D7</color>
 </resources>

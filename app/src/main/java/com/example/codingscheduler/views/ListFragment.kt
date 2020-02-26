@@ -45,7 +45,7 @@ class ListFragment(parent:MainViewModel):Fragment(){
         popupView.setVariable(BR.vm,model)
         val timerView=DataBindingUtil.inflate<DigTimerBinding>(layoutInflater,R.layout.dig_timer,view,false)
         timerView.setVariable(BR.vm,model)
-        val timerWindow=PopupWindow(timerView.root,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT)
+        val timerWindow=PopupWindow(timerView.root,1200,200)
         val builder = AlertDialog.Builder(context!!)
         dialog=builder.setView(popupView.root).create()
         model.isAddClicked.observe(this, Observer {
@@ -59,7 +59,7 @@ class ListFragment(parent:MainViewModel):Fragment(){
 
         model.mList.observe(this, Observer { frg_recyclerView.adapter?.notifyDataSetChanged() })
         model.time.observe(this, Observer { timerView.root.time_view.text=model.makeTimeFormat(it) })
-        model.isTimerShow.observe(this, Observer { if(it) timerWindow.showAsDropDown(view,0,-200) else timerWindow.dismiss() })
+        model.isTimerShow.observe(this, Observer { if(it) timerWindow.showAsDropDown(view,0,-230) else timerWindow.dismiss() })
         model.selectedCard.observe(this, Observer { timerView.timerTitle.text=it?.title })
         model.isTimeRunning.observe(this, Observer { timerView.playBtn.setImageResource(if(it) R.drawable.ic_pause else R.drawable.ic_play) })
     }
