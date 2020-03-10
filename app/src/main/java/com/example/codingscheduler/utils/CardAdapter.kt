@@ -12,6 +12,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codingscheduler.MainViewModel
 import com.example.codingscheduler.R
+import com.example.codingscheduler.RoomDB.CardRepo
 import com.example.codingscheduler.databinding.LayoutCardBinding
 import com.example.codingscheduler.dataclass.CardItem
 import kotlinx.android.synthetic.main.layout_card.view.*
@@ -58,7 +59,7 @@ class CardAdapter(parentModel: MainViewModel) :RecyclerView.Adapter<CardAdapter.
             }}
         holder.itemView.delete_btn.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
-                model.repo.delete(mList.value!![position].id)
+                CardRepo.delete(mList.value!![position].id)
                 mList.value!!.removeAt(position)
                 notifyItemRemoved(position)
             }

@@ -5,10 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.room.TypeConverters
 import com.example.codingscheduler.dataclass.CardItem
 
-class CardRepo(application: Application) {
-    private val cardDao: CardDao by lazy {
+object CardRepo{
+    lateinit var cardDao: CardDao
+    fun initCardDao(application: Application){
         val db = CardDatabase.getInstance(application)!!
-        db.getCardDao()
+        cardDao=db.getCardDao()
     }
     private val cards: LiveData<MutableList<CardItem>> by lazy {
         cardDao.getAllCard()

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.codingscheduler.RoomDB.CardRepo
 import com.example.codingscheduler.dataclass.CardItem
 import java.text.FieldPosition
@@ -12,8 +13,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.concurrent.timer
 
-class MainViewModel(parentRepo:CardRepo):ViewModel() {
-    val repo=parentRepo
+class MainViewModel:ViewModel() {
     val mList=MutableLiveData<ArrayList<CardItem>>()
     var isAddClicked=MutableLiveData<Boolean>()
     var digTitle=MutableLiveData<String>()
@@ -29,8 +29,9 @@ class MainViewModel(parentRepo:CardRepo):ViewModel() {
         modelValuesInit()
     }
     fun addCard(item: CardItem) {
-        repo.insert(item)
+        CardRepo.insert(item)
 //        mList.value!!.add(item)
+
     }
     fun toggleIsAddClicked(){
         isAddClicked.value=isAddClicked.value!!.not()
@@ -84,7 +85,7 @@ class MainViewModel(parentRepo:CardRepo):ViewModel() {
         cardTimeList.add(time.value!!)
         tmpList.add(selectedCard.value!!)
 //        mList.postValue(tmpList)
-        repo.updateTimes(cardTimeList,selectedCard.value!!.id)
+        CardRepo.updateTimes(cardTimeList,selectedCard.value!!.id)
     }
     fun modelValuesInit(){
         mList.value= ArrayList()

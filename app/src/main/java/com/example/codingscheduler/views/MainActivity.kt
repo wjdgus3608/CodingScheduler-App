@@ -2,9 +2,12 @@ package com.example.codingscheduler.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.example.codingscheduler.MainViewModel
 import com.example.codingscheduler.R
 import com.example.codingscheduler.RoomDB.CardRepo
@@ -17,13 +20,15 @@ class MainActivity : AppCompatActivity() {
         val binding=DataBindingUtil.setContentView<ActivityMainBinding>(this,
             R.layout.activity_main
         )
-        model= MainViewModel(CardRepo(application))
-        model.repo.getAllMemo().observe(this, Observer { model.mList.postValue(ArrayList(it)) })
+        CardRepo.initCardDao(application)
+        model=ViewModelProvider(this,ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
+        CardRepo.getAllMemo().observe(this, Observer {
+            model.mList.postValue(ArrayList(it)) })
         binding.setVariable(BR.vm, model)
         binding.setLifecycleOwner { this.lifecycle }
         supportFragmentManager.beginTransaction().replace(
             R.id.fragment_container,
-            ListFragment(model)
+            ListFragment()
         ).commit()
     }
 }

@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.library.baseAdapters.BR
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.codingscheduler.MainViewModel
 import com.example.codingscheduler.R
 import com.example.codingscheduler.databinding.DigAddBinding
@@ -25,8 +26,9 @@ import kotlinx.android.synthetic.main.layout_card.*
 import kotlin.concurrent.timer
 
 
-class ListFragment(parent:MainViewModel):Fragment(){
-    val model=parent
+class ListFragment:Fragment(){
+    val model by lazy {
+        ViewModelProvider(activity!!.viewModelStore,ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)}
     var dialog:AlertDialog?=null
 
     override fun onCreateView(
