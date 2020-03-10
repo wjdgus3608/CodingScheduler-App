@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding.setLifecycleOwner { this.lifecycle }
         supportFragmentManager.beginTransaction().replace(
             R.id.fragment_container,
-            ListFragment()
+            ListFragment.getInstance()
         ).commit()
     }
 }

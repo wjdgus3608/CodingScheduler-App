@@ -1,5 +1,6 @@
 package com.example.codingscheduler.utils
 
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -45,17 +46,24 @@ class CardAdapter(parentModel: MainViewModel) :RecyclerView.Adapter<CardAdapter.
                     return false
                 }
             })
+            val RED=Color.parseColor("#ff0000")
+            val GREEN=Color.parseColor("#00ff00")
             mList.value!![position].let { item -> with(holder){
                 title.text=item.title
                 number.text=item.number
                 val size=item.times!!.size
-                if(size>=3)
-                time3.text=model.makeTimeFormat(item.times!![2])
-                if(size>=2)
-                    time2.text=model.makeTimeFormat(item.times!![1])
-                if(size>=1)
-                    time1.text=model.makeTimeFormat(item.times!![0])
-                Log.e("log","${size}")
+                if(size>=3) {
+                    time3.text = model.makeTimeFormat(item.times!![2].first)
+                    time3.setTextColor(if(item.times!![2].second==0) GREEN else RED)
+                }
+                if(size>=2){
+                    time2.text=model.makeTimeFormat(item.times!![1].first)
+                    time2.setTextColor(if(item.times!![1].second==0) GREEN else RED)
+                }
+                if(size>=1){
+                    time1.text=model.makeTimeFormat(item.times!![0].first)
+                    time1.setTextColor(if(item.times!![0].second==0) GREEN else RED)
+                }
             }}
         holder.itemView.delete_btn.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {

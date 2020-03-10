@@ -25,9 +25,9 @@ object CardRepo{
     fun delete(id: Long){
         Thread(Runnable { cardDao.deleteById(id) }).start()
     }
-    fun updateTimes(list:MutableList<Long>, id:Long){
+    fun updateTimes(list:MutableList<Pair<Long,Int>>, id:Long){
         var str=""
-        list.map { str+="$it," }
+        list.map { str+="${it.first}/${it.second}," }
         Thread(Runnable { cardDao.updateTimes(str,id) }).start()
     }
 }
