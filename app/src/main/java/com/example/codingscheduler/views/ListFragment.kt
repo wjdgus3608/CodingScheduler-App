@@ -13,9 +13,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.library.baseAdapters.BR
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.codingscheduler.MainViewModel
 import com.example.codingscheduler.R
 import com.example.codingscheduler.databinding.DigAddBinding
+import com.example.codingscheduler.databinding.DigBtnBinding
 import com.example.codingscheduler.databinding.DigTimerBinding
 import com.example.codingscheduler.databinding.FrgListBinding
 import kotlinx.android.synthetic.main.dig_add.*
@@ -25,9 +27,17 @@ import kotlinx.android.synthetic.main.layout_card.*
 import kotlin.concurrent.timer
 
 
-class ListFragment(parent:MainViewModel):Fragment(){
-    val model=parent
+class ListFragment:Fragment(){
+    val model by lazy {
+        ViewModelProvider(activity!!.viewModelStore,ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)}
     var dialog:AlertDialog?=null
+
+    companion object{
+        fun getInstance():ListFragment{
+            val frg=ListFragment()
+            return frg
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,6 +56,9 @@ class ListFragment(parent:MainViewModel):Fragment(){
         val timerView=DataBindingUtil.inflate<DigTimerBinding>(layoutInflater,R.layout.dig_timer,view,false)
         timerView.setVariable(BR.vm,model)
         val timerWindow=PopupWindow(timerView.root,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT)
+        val popupBtnView=DataBindingUtil.inflate<DigBtnBinding>(layoutInflater,R.layout.dig_btn,view,false)
+        popupBtnView.setVariable(BR.vm,model)
+        val popupBtnWindow=PopupWindow(popupBtnView.root,200,100,true)
         val builder = AlertDialog.Builder(context!!)
         dialog=builder.setView(popupView.root).create()
         model.isAddClicked.observe(this, Observer {
@@ -56,10 +69,10 @@ class ListFragment(parent:MainViewModel):Fragment(){
             popupView.digTitle.text?.clear()
             popupView.digNumber.text?.clear()
         })
-
         model.mList.observe(this, Observer { frg_recyclerView.adapter?.notifyDataSetChanged() })
         model.time.observe(this, Observer { timerView.root.time_view.text=model.makeTimeFormat(it) })
         model.isTimerShow.observe(this, Observer { if(it) timerWindow.showAsDropDown(view,0,-230) else timerWindow.dismiss() })
+        model.isRecordClicked.observe(this, Observer { if(it) popupBtnWindow.showAsDropDown(view,800,-350) else popupBtnWindow.dismiss() })
         model.selectedCard.observe(this, Observer { timerView.timerTitle.text=it?.title })
         model.isTimeRunning.observe(this, Observer { timerView.playBtn.setImageResource(if(it) R.drawable.ic_pause else R.drawable.ic_play) })
     }

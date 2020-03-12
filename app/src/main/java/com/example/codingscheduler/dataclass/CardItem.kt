@@ -10,5 +10,5 @@ data class CardItem(
     var number:String,
     var type:String,
     var tags:MutableList<String>?,
-    var times:MutableList<Long>?
+    var times:MutableList<Pair<Long,Int>>?
 )

@@ -5,10 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.room.TypeConverters
 import com.example.codingscheduler.dataclass.CardItem
 
-class CardRepo(application: Application) {
-    private val cardDao: CardDao by lazy {
+object CardRepo{
+    lateinit var cardDao: CardDao
+    fun initCardDao(application: Application){
         val db = CardDatabase.getInstance(application)!!
-        db.getCardDao()
+        cardDao=db.getCardDao()
     }
     private val cards: LiveData<MutableList<CardItem>> by lazy {
         cardDao.getAllCard()
@@ -24,9 +25,9 @@ class CardRepo(application: Application) {
     fun delete(id: Long){
         Thread(Runnable { cardDao.deleteById(id) }).start()
     }
-    fun updateTimes(list:MutableList<Long>, id:Long){
+    fun updateTimes(list:MutableList<Pair<Long,Int>>, id:Long){
         var str=""
-        list.map { str+="$it," }
+        list.map { str+="${it.first}/${it.second}," }
         Thread(Runnable { cardDao.updateTimes(str,id) }).start()
     }
 }
