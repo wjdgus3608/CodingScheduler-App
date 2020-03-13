@@ -25,23 +25,37 @@
         >
         <LinearLayout
             android:id="@+id/card_text_container"
-            android:layout_width="250dp"
+            android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/card_title"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="title"
-                />
+            android:orientation="horizontal"
+            android:padding="10dp">
             <TextView
                 android:id="@+id/card_num"
-                android:layout_width="100dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/card_title"
                 android:layout_toRightOf="@+id/card_title"
-                android:text="number"/>
+                android:text="card_number"
+                android:textColor="@android:color/black"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="20sp"
+                android:fontFamily="@font/card_font"
+                android:layout_marginRight="10dp"/>
+            <TextView
+                android:id="@+id/card_title"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:text="card_title"
+                android:textColor="@android:color/black"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="20sp"
+                android:fontFamily="@font/card_font"
+                />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/card_tag_container"
@@ -51,28 +65,26 @@
             android:layout_below="@+id/card_text_container"
             >
 
-
-
         </LinearLayout>
         <LinearLayout
             android:id="@+id/card_timer_container"
-            android:layout_width="match_parent"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_toEndOf="@+id/card_text_container"
             android:layout_toRightOf="@+id/card_text_container"
-            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
             android:gravity="center">
             <Button
                 android:id="@+id/timer_btn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@drawable/ic_timer"
                 />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/card_record_container"
-            android:layout_width="match_parent"
+            android:layout_width="70dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_toEndOf="@+id/card_text_container"
